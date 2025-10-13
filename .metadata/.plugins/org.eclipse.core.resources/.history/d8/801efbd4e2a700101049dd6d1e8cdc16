@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 선택</title>
+<style>
+	#container{width: 80%; margin: 0 auto; text-align: center;}
+	h2{border-bottom: 2px solid #444; padding: 16px;}
+</style>
+</head>
+<%
+	//입력된 이름 받아오기
+	String name = request.getParameter("username");
+	//out.println(name);
+	//세션 발급
+	session.setAttribute("sessionName", name);
+%>
+
+<body>
+	<section id="container">
+		<h2>상품 선택</h2>
+		<p><b>[<%=session.getAttribute("sessionName") %>]</b>님 환영합니다.</p>
+	</section>
+</body>
+</html>
+
+
+
+
+
+
