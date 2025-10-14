@@ -1,0 +1,18 @@
+<%@ page import="beans.MemberBean"%>  <!-- 디렉티브 태그 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>page 디렉티브 태그 </title>
+</head>
+<body>
+	<%
+		MemberBean member = new MemberBean();
+		out.println("회원 번호: " + member.getId());
+		out.println("<br>");
+		out.println("이름: " + member.getName());
+	%>
+</body>
+</html>

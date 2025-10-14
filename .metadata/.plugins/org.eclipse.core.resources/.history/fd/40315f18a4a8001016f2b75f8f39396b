@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>useBean - 로그인 처리</title>
+</head>
+<body>
+	<%
+	    //폼에 입력된 값 받아오기
+		String id = request.getParameter("uid");
+	    String pw = request.getParameter("passwd");
+	    
+	    out.println("아이디: " + id + ", 비밀번호: " + pw);
+	
+	%>
+</body>
+</html>

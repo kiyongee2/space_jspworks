@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>useBean - 로그인</title>
+</head>
+<body>
+	<h2>로그인</h2>
+	<form action="loginProcess.jsp" method="post">
+		<ul>
+			<li>
+				<label for="uid">아이디</label>
+				<input type="text" name="uid">
+			</li>
+		</ul>
+	
+	</form>
+</body>
+</html>
