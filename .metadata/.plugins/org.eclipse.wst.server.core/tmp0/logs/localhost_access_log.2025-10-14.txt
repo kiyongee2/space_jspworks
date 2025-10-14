@@ -22,3 +22,6 @@
 0:0:0:0:0:0:0:1 - - [14/Oct/2025:11:22:25 +0900] "POST /jweb01/login/loginProcess.jsp HTTP/1.1" 200 271
 0:0:0:0:0:0:0:1 - - [14/Oct/2025:11:22:34 +0900] "GET /jweb01/login/loginForm.jsp HTTP/1.1" 200 595
 0:0:0:0:0:0:0:1 - - [14/Oct/2025:11:22:39 +0900] "POST /jweb01/login/loginProcess.jsp HTTP/1.1" 200 270
+127.0.0.1 - - [14/Oct/2025:11:55:29 +0900] "GET / HTTP/1.1" 404 808
+0:0:0:0:0:0:0:1 - - [14/Oct/2025:11:55:29 +0900] "GET /jweb01/redirect/first HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Oct/2025:11:55:29 +0900] "GET /jweb01/redirect/second HTTP/1.1" 200 86
