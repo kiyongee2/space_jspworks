@@ -45,7 +45,7 @@
 	</p>
 	
 	<fmt:setLocale value="ja"/>
-	<p>영문 형식:
+	<p>일본어 형식:
 		<fmt:formatDate value="${now}" type="both" dateStyle="full" />
 	</p>
 	
