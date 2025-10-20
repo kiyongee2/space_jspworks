@@ -14,4 +14,22 @@ public class MemberService {
 	public List<Member> getMemberList(){
 		return dao.getMemberList();
 	}
+	
+	//회원 가입
+	public void addMember(Member member) {
+		dao.addMember(member);
+	}
+	
+	//회원 정보
+	public Member getMember(String mid) {
+		return dao.getMember(mid);
+	}
 }
+
+
+
+
+
+
+
+

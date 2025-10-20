@@ -16,7 +16,11 @@
 				<img alt="상점" src="/resources/images/store.png">
 			</div>
 			
-			<p><a href="/member?action=memberList">회원 목록</a></p>
+			<p>
+				<a href="/member?action=memberList">회원 목록</a> |
+				<a href="/member?action=addForm">회원 가입</a> |
+				<a href="/member?action=loginForm">로그인</a> 
+			</p>
 		</div>
 	</section>
 </body>

@@ -25,17 +25,60 @@ public class MemberController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		String nextPage = "";  //경로 변수
 		
-		if(action.equals("memberList")) {
+		if(action.equals("memberList")) { //회원 목록
 			List<Member> memberList = service.getMemberList();
 			
 			//모델을 저장
 			request.setAttribute("memberList", memberList);
+			nextPage = "/member/memberList.jsp";
+		}else if(action.equals("addForm")) { //회원 가입 페이지
+			nextPage = "/member/addForm.jsp";
+		}else if(action.equals("add")) { //회원 가입
+			//폼에 입력된 데이터 받기
+			String mid = request.getParameter("mid");
+			String passwd = request.getParameter("passwd");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			
+			//Member 객체 생성
+			Member member = new Member();
+			member.setMid(mid);
+			member.setPasswd(passwd);
+			member.setName(name);
+			member.setGender(gender);
+			
+			//가입 메서드 호출
+			service.addMember(member);
+			
+			//가입 후 페이지 이동(url 주소)
+			response.sendRedirect("/member?action=memberList");
+			return;  //즉시 종료
+		}else if(action.equals("info")) { //회원 정보
+			String mid = request.getParameter("mid");
+			
+			//getMember() 호출
+			Member member = service.getMember(mid);
+			
+			//모델 저장하기
+			request.setAttribute("member", member);
+			
+			//뷰로 보내기
+			nextPage = "/member/memberInfo.jsp";
+		}else if(action.equals("loginForm")) {
+			nextPage = "/member/loginForm.jsp";
+		}else if(action.equals("login")) {
+			
+			//로그인 메서드 호출
+			
+			//로그인 후 이동 페이지
+			
 		}
 		
-		//포워딩
+		//포워딩 - nextPage(파일경로)
 		RequestDispatcher rd =
-				request.getRequestDispatcher("/member/memberList.jsp");
+				request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
 	}
 
