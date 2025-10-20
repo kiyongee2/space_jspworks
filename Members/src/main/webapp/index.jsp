@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +20,20 @@
 			<p>
 				<a href="/member?action=memberList">회원 목록</a> |
 				<a href="/member?action=addForm">회원 가입</a> |
-				<a href="/member?action=loginForm">로그인</a> 
+				<c:if test="${empty sessionId}">
+					<a href="/member?action=loginForm">로그인</a>
+				</c:if>
+				<c:if test="${not empty sessionId}">
+					<a href="/member?action=logout">로그아웃</a>
+				</c:if>
 			</p>
 		</div>
 	</section>
 </body>
 </html>
+
+
+
+
+
+

@@ -21,6 +21,11 @@
 					<label>비밀번호</label>
 					<input type="password" name="passwd">
 				</li>
+				<li style="color: red">
+					<c:if test="${not empty error}">
+						${error}
+					</c:if>
+				</li>
 				<li>
 					<input type="submit" value="로그인">
 				</li>

@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import member.model.Member;
 import member.service.MemberService;
 
@@ -26,6 +27,7 @@ public class MemberController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		String nextPage = "";  //경로 변수
+		HttpSession session = request.getSession(); //세션 객체 생성
 		
 		if(action.equals("memberList")) { //회원 목록
 			List<Member> memberList = service.getMemberList();
@@ -68,15 +70,33 @@ public class MemberController extends HttpServlet {
 			nextPage = "/member/memberInfo.jsp";
 		}else if(action.equals("loginForm")) {
 			nextPage = "/member/loginForm.jsp";
-		}else if(action.equals("login")) {
+		}else if(action.equals("login")) { //로그인 처리
+			//폼에 입력된 데이터 받기
+			String mid = request.getParameter("mid");
+			String pw = request.getParameter("passwd");
 			
 			//로그인 메서드 호출
-			
-			//로그인 후 이동 페이지
-			
+			boolean result = service.checkLogin(mid, pw);
+			if(result) {
+				//로그인 성공 - 세션 발급
+				session.setAttribute("sessionId", mid);
+				//로그인 후 이동 페이지(url 경로) - 인덱스 페이지
+				response.sendRedirect("/");
+				return; //즉시 종료
+			}else {
+				//로그인 실패
+				String errorMsg = "아이디나 비밀번호를 확인해 주세요.";
+				request.setAttribute("error", errorMsg);
+				nextPage = "/member/loginForm.jsp";
+			}
+		}else if(action.equals("logout")) {
+			//세션 삭제
+			session.invalidate();
+			response.sendRedirect("/");
+			return; //즉시 종료
 		}
 		
-		//포워딩 - nextPage(파일경로)
+		//포워딩 - nextPage(파일 경로)
 		RequestDispatcher rd =
 				request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);

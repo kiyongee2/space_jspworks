@@ -24,6 +24,11 @@ public class MemberService {
 	public Member getMember(String mid) {
 		return dao.getMember(mid);
 	}
+	
+	//로그인
+	public boolean checkLogin(String mid, String passwd) {
+		return dao.checkLogin(mid, passwd);
+	}
 }
 
 

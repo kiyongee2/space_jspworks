@@ -11,6 +11,10 @@
 <body>
 	<section id="container">
 		<h2>회원 목록</h2>
+		<p>
+			<span style="color: blue">[${sessionId}]</span>님 환영합니다. | 
+			<a href="/member?action=logout">로그아웃</a>
+		</p>
 		<table>
 			<thead>
 				<tr>

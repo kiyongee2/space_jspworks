@@ -18,6 +18,15 @@
 			<li>- 성별: ${member.gender}</li>
 			<li>- 가입일: ${member.joinDate}</li>
 		</ul>
+		<p>
+			<a href="/member?action=memberList">
+				<button>목록</button>
+			</a>
+			<c:if test="${member.mid eq sessionId}">
+				<a href="/member?action=delete&mid=${member.mid}">
+					<button>탈퇴</button></a>
+			</c:if>
+		</p>
 	</section>
 </body>
 </html>
